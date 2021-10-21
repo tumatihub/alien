@@ -5,6 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Weapon))]
+[RequireComponent(typeof(BombWeapon))]
 public class PlayerInput : MonoBehaviour
 {
     private Rigidbody2D rb = null;
@@ -21,11 +22,13 @@ public class PlayerInput : MonoBehaviour
     private bool IsTouchDevice = false;
 
     private Weapon weapon;
+    private BombWeapon bombWeapon;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         weapon = GetComponent<Weapon>();
+        bombWeapon = GetComponent<BombWeapon>();
     }
 
     private void Update()
@@ -43,6 +46,12 @@ public class PlayerInput : MonoBehaviour
         {
             weapon.Shoot();
         }
+
+        if (Input.GetButtonDown("Fire3"))
+        {
+            bombWeapon.SpawnBomb();
+        }
+
     }
 
     private void FixedUpdate()

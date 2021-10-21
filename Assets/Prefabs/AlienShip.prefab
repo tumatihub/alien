@@ -125,6 +125,8 @@ GameObject:
   - component: {fileID: 7486418839474605433}
   - component: {fileID: 7486418839474605432}
   - component: {fileID: 3601600901704571614}
+  - component: {fileID: 365345}
+  - component: {fileID: 365346}
   m_Layer: 0
   m_Name: AlienShip
   m_TagString: Untagged
@@ -145,6 +147,7 @@ Transform:
   m_Children:
   - {fileID: 7486418839318008052}
   - {fileID: 8885602520111954598}
+  - {fileID: 806343661138107720}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -225,3 +228,59 @@ MonoBehaviour:
   shockPosition: {fileID: 8885602520111954598}
   cooldownTime: 0.4
   shock: {fileID: 5064907753834794265, guid: 524ae6492ac9d0445a9c2261a69ff537, type: 3}
+--- !u!114 &365345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486418839474605439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ead9458b6a77114aaf1eb62e3628c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &365346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486418839474605439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ae939365634654dbe9e383dd7c5c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 7679954776868348299, guid: ed898ffa3a2872d44af2179842d49a72, type: 3}
+  bombSpawnPoint: {fileID: 806343661138107720}
+--- !u!1 &8379987637198216895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 806343661138107720}
+  m_Layer: 0
+  m_Name: bombSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &806343661138107720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379987637198216895}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7486418839474605428}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
