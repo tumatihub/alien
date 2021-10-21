@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3855010612156255210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalPosition: {x: 2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7486418839474605428}
@@ -222,6 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e0556971546374c9428d60b2c44df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {fileID: 8885602520111954598}
-  cooldownTime: 1
+  shockPosition: {fileID: 8885602520111954598}
+  cooldownTime: 0.4
   shock: {fileID: 5064907753834794265, guid: 524ae6492ac9d0445a9c2261a69ff537, type: 3}
