@@ -3,44 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Weapon))]
 [RequireComponent(typeof(BombWeapon))]
+[RequireComponent(typeof(Engine))]
 public class PlayerInput : MonoBehaviour
 {
-    private Rigidbody2D rb = null;
-    [SerializeField]
-    private float force = 1000f;
     private float horizontalInput = 0;
-    private float speed = 5f;
     
     [SerializeField]
     private Transform shipSprite = null;
 
-    [SerializeField]
-    private float rotationSpeed = 10f;
-    private bool IsTouchDevice = false;
-
     private Weapon weapon;
     private BombWeapon bombWeapon;
 
+    private Engine engine;
+
+
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         weapon = GetComponent<Weapon>();
         bombWeapon = GetComponent<BombWeapon>();
+        engine = GetComponent<Engine>();
     }
 
     private void Update()
     {
-        if (IsTouchDevice)
-        {
-            horizontalInput = Input.acceleration.x;
-        }
-        else
-        {
-            horizontalInput = Input.GetAxis("Horizontal");
-        }
+        horizontalInput = Input.GetAxis("Horizontal");
 
         if (Input.GetButtonDown("Fire2"))
         {
@@ -52,30 +40,16 @@ public class PlayerInput : MonoBehaviour
             bombWeapon.SpawnBomb();
         }
 
+        if (Input.GetButtonDown("Fire1")) engine.StartEngine();
+        if (Input.GetButtonUp("Fire1")) engine.StopEngine();
+
     }
 
     private void FixedUpdate()
     {
-        //Rotate();
-        
-        Move();
-
-        if (Input.GetButton("Fire1") || Input.touchCount > 0)
-        {
-            if (!IsTouchDevice && Input.touchCount > 0) IsTouchDevice = true;
-            rb.AddForce(transform.up * force * Time.fixedDeltaTime);
-        }
-
-    }
-
-    private void Move()
-    {
-        Vector2 newPos = new Vector2(
-            transform.position.x + horizontalInput * speed * Time.fixedDeltaTime,
-            transform.position.y
-        );
-        transform.position = newPos;
+        engine.Move(horizontalInput);
         RotateShip();
+
     }
 
     private void RotateShip()
@@ -96,8 +70,4 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    private void Rotate()
-    {
-        rb.MoveRotation(rb.rotation + Time.fixedDeltaTime * rotationSpeed * -horizontalInput);
-    }
 }
