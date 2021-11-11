@@ -75,10 +75,10 @@ public class Engine : MonoBehaviour
 
     public void Move(float horizontalInput)
     {
-        Vector2 newPos = new Vector2(
-            transform.position.x + horizontalInput * speed * Time.fixedDeltaTime,
-            transform.position.y
-        );
-        transform.position = newPos;
+        if (horizontalInput == 0) return;
+
+        Vector2 dir = Vector2.right * horizontalInput;
+        
+        transform.Translate(dir * speed * Time.deltaTime);
     }
 }

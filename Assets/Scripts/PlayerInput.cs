@@ -43,14 +43,10 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetButtonDown("Fire1")) engine.StartEngine();
         if (Input.GetButtonUp("Fire1")) engine.StopEngine();
 
-    }
-
-    private void FixedUpdate()
-    {
         engine.Move(horizontalInput);
         RotateShip();
-
     }
+
 
     private void RotateShip()
     {

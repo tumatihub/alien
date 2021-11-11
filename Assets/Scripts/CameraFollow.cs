@@ -7,18 +7,12 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private Transform target = null;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (target != null)
         {
             transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
-            //transform.up = target.up;
+            
         }
     }
 }
