@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField]
-    private float timer = 2f;
-    private float countdown = 0f;
-    [SerializeField]
-    private float explosionRadius = 1.4f;
-    private bool exploded = false;
+    [SerializeField] float timer = 2f;
+    float countdown = 0f;
+    [SerializeField] float explosionRadius = 1.4f;
+    bool exploded = false;
 
     void Start()
     {
@@ -29,10 +27,14 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    private void Explode()
+    void Explode()
     {
         exploded = true;
-        Collider2D[] destructibleWalls = Physics2D.OverlapCircleAll(transform.position, explosionRadius, LayerMask.GetMask("DestructibleWall"));
+        Collider2D[] destructibleWalls = Physics2D.OverlapCircleAll(
+            transform.position, 
+            explosionRadius, 
+            LayerMask.GetMask("DestructibleWall")
+        );
         if (destructibleWalls.Length > 0)
         {
             foreach(Collider2D collider in destructibleWalls)
@@ -44,7 +46,7 @@ public class Bomb : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }

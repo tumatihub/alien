@@ -6,21 +6,16 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class Bat : MonoBehaviour
 {
-    [SerializeField]
-    private Transform topWaypoint = null;
-    [SerializeField]
-    private Transform downWaypoint = null;
-    private Transform nextPoint = null;
-    [SerializeField]
-    private float speed = 2f;
-    [SerializeField]
-    private float waypointMinRadius = .2f;
-    [SerializeField]
-    private Transform batBody = null;
+    [SerializeField] Transform topWaypoint = null;
+    [SerializeField] Transform downWaypoint = null;
+    Transform nextPoint = null;
+    [SerializeField] float speed = 2f;
+    [SerializeField] float waypointMinRadius = .2f;
+    [SerializeField] Transform batBody = null;
 
-    private Enemy enemyBase = null;
+    Enemy enemyBase = null;
 
-    private void Awake()
+    void Awake()
     {
         enemyBase = GetComponent<Enemy>();
         enemyBase.OnDie += HandleDie;
@@ -44,7 +39,7 @@ public class Bat : MonoBehaviour
         MoveToNextPoint();
     }
 
-    private void MoveToNextPoint()
+    void MoveToNextPoint()
     {
         Vector3 dir = (nextPoint.position - batBody.transform.position).normalized;
         batBody.transform.position += dir * speed * Time.deltaTime;
@@ -54,7 +49,7 @@ public class Bat : MonoBehaviour
         }
     }
 
-    private void ChangeNextWaypoint()
+    void ChangeNextWaypoint()
     {
         if (nextPoint.position == topWaypoint.position)
         {
@@ -66,18 +61,17 @@ public class Bat : MonoBehaviour
         }
     }
 
-    private bool IsCloseToNextPoint()
+    bool IsCloseToNextPoint()
     {
         return Vector3.Distance(batBody.transform.position, nextPoint.position) <= waypointMinRadius;
     }
 
-
-    public void HandleDie()
+    void HandleDie()
     {
         Destroy(gameObject);
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         if (topWaypoint != null && downWaypoint != null)
         {

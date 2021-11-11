@@ -8,25 +8,22 @@ using UnityEngine;
 [RequireComponent(typeof(Engine))]
 public class PlayerInput : MonoBehaviour
 {
-    private float horizontalInput = 0;
+    float horizontalInput = 0;
     
-    [SerializeField]
-    private Transform shipSprite = null;
+    [SerializeField] Transform shipSprite = null;
 
-    private Weapon weapon;
-    private BombWeapon bombWeapon;
+    Weapon weapon;
+    BombWeapon bombWeapon;
+    Engine engine;
 
-    private Engine engine;
-
-
-    private void Awake()
+    void Awake()
     {
         weapon = GetComponent<Weapon>();
         bombWeapon = GetComponent<BombWeapon>();
         engine = GetComponent<Engine>();
     }
 
-    private void Update()
+    void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
@@ -48,7 +45,7 @@ public class PlayerInput : MonoBehaviour
     }
 
 
-    private void RotateShip()
+    void RotateShip()
     {
         if(horizontalInput > 0)
         {

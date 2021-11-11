@@ -19,4 +19,9 @@ public class FuelBar : MonoBehaviour
     {
         fuelBar.value = currentFuel / totalFuel;
     }
+
+    void OnDestroy()
+    {
+        Engine.OnCosumeFuel -= HandleConsumeFuel;
+    }
 }

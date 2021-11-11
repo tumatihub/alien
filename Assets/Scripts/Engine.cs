@@ -6,26 +6,24 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Engine : MonoBehaviour
 {
-    private Rigidbody2D rb = null;
-    [SerializeField]
-    private float force = 1000f;
-    private float speed = 5f;
+    Rigidbody2D rb = null;
+    [SerializeField] float force = 1000f;
+    float speed = 5f;
 
 
-    [SerializeField]
-    private float totalFuel = 100f;
+    [SerializeField] float totalFuel = 100f;
     public float TotalFuel => totalFuel;
-    private float currentFuel = 0f;
-    private float consumptionRateInSeconds = 1f;
-    private float fuelCost = 10f;
-    private float countdown = 0f;
+    float currentFuel = 0f;
+    float consumptionRateInSeconds = 1f;
+    float fuelCost = 10f;
+    float countdown = 0f;
 
-    public static event Action OnEndFuel;
     public static event Action<float, float> OnCosumeFuel;
+    public static event Action OnEndFuel;
 
-    private IEnumerator engineCoroutine;
+    IEnumerator engineCoroutine;
 
-    private void Awake()
+    void Awake()
     {
         engineCoroutine = EngineCoroutine();
         currentFuel = totalFuel;
@@ -52,7 +50,7 @@ public class Engine : MonoBehaviour
         OnEndFuel?.Invoke();
     }
 
-    private void ConsumeFuel()
+    void ConsumeFuel()
     {
         if (currentFuel > 0)
         {

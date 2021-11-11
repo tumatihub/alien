@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
-    [SerializeField]
-    private float lifeTime = 1f;
+    [SerializeField] float lifeTime = 1f;
 
-    private void Start()
+    void Start()
     {
         Object.Destroy(this.gameObject, lifeTime);
     }

@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField]
-    private Transform shockPosition = null;
+    [SerializeField] Transform shockPosition = null;
 
-    [SerializeField]
-    private float cooldownTime = 1f;
-    private float countdown = 0f;
+    [SerializeField] float cooldownTime = 1f;
+    float countdown = 0f;
 
-    [SerializeField]
-    private SpriteRenderer shock = null;
+    [SerializeField] SpriteRenderer shock = null;
 
 
-    private void Update()
+    void Update()
     {
         if(countdown > 0)
         {
