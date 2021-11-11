@@ -20,8 +20,8 @@ public class Engine : MonoBehaviour
     private float fuelCost = 10f;
     private float countdown = 0f;
 
-    public event Action OnEndFuel;
-    public event Action<float> OnCosumeFuel;
+    public static event Action OnEndFuel;
+    public static event Action<float, float> OnCosumeFuel;
 
     private IEnumerator engineCoroutine;
 
@@ -57,7 +57,7 @@ public class Engine : MonoBehaviour
         if (currentFuel > 0)
         {
             currentFuel -= fuelCost;
-            OnCosumeFuel?.Invoke(currentFuel);
+            OnCosumeFuel?.Invoke(currentFuel, totalFuel);
         }
     }
 

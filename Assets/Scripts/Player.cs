@@ -6,13 +6,10 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Engine))]
 public class Player : MonoBehaviour
 {
-    private Engine engine = null;
-
     private void Awake()
-    {
-        engine = GetComponent<Engine>();
-        engine.OnEndFuel += HandleEndFuel;
-        engine.OnCosumeFuel += HandleConsumeFuel;
+    {       
+        Engine.OnEndFuel += HandleEndFuel;
+        Engine.OnCosumeFuel += HandleConsumeFuel;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,9 +20,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void HandleConsumeFuel(float currentFuel)
+    private void HandleConsumeFuel(float currentFuel, float totalFuel)
     {
-        Debug.Log(currentFuel + " / " + engine.TotalFuel);
+        Debug.Log(currentFuel + " / " + totalFuel);
     }
 
     private void HandleEndFuel()
